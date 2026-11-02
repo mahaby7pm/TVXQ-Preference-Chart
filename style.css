@@ -1,0 +1,341 @@
+
+body {
+    background-color: #FFFFFF;
+    color: #222222;
+}
+
+#preference-chart {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #D9D9D9;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#preference-chart th,
+#preference-chart td {
+    border-right: 1px solid #D9D9D9;
+    border-bottom: 1px solid #D9D9D9;
+    padding: 12px;
+    text-align: center;
+}
+
+#preference-chart tr > :last-child {
+    border-right: none;
+}
+
+#preference-chart tr:last-child > * {
+    border-bottom: none;
+}
+
+#preference-chart th {
+    background-color: #A6192E;
+    color: #FFFFFF;
+}
+
+#preference-chart td {
+    background-color: #FFFFFF;
+    color: #222222;
+    cursor: pointer;
+}
+
+#preference-chart td[data-preference="OTP"] {
+    background-color: #EAA0B1;
+}
+
+#preference-chart td[data-preference="좋음"] {
+    background-color: #F4C3A1;
+}
+
+#preference-chart td[data-preference="괜찮음"] {
+    background-color: #F4E3AC;
+}
+
+#preference-chart td[data-preference="관심 없음"] {
+    background-color: #FFFFFF;
+}
+
+#preference-chart td[data-preference="별로"] {
+    background-color: #B8C9DF;
+}
+
+#preference-chart td[data-preference="지뢰"] {
+    background-color: #B5ADC7;
+}
+
+
+#preference-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: #777777;
+}
+
+#preference-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.legend-color {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border-radius: 3px;
+}
+
+.legend-color.otp { background-color: #EAA0B1; }
+.legend-color.good { background-color: #F4C3A1; }
+.legend-color.okay { background-color: #F4E3AC; }
+.legend-color.neutral {
+    background-color: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    box-sizing: border-box;
+}
+.legend-color.bad { background-color: #B8C9DF; }
+.legend-color.mine { background-color: #B5ADC7; }
+
+
+#preference-popup:not([hidden]) {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 14px;
+    padding: 24px;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    z-index: 100;
+    width: 280px;
+    max-width: calc(100vw - 48px);
+    box-sizing: border-box;
+}
+
+#preference-popup[hidden] {
+    display: none;
+}
+
+
+#preference-popup h2 {
+    margin-top: 0;
+    margin-bottom: 18px;
+    font-size: 18px;
+    text-align: center;
+}
+
+#preference-popup button[data-preference] {
+    display: inline-block;
+    width: calc(50% - 5px);
+    height: 42px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 7px;
+    color: #222222;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#preference-popup button[data-preference="OTP"] {
+    background-color: #EAA0B1;
+}
+
+#preference-popup button[data-preference="좋음"] {
+    background-color: #F4C3A1;
+}
+
+#preference-popup button[data-preference="괜찮음"] {
+    background-color: #F4E3AC;
+}
+
+#preference-popup button[data-preference="관심 없음"] {
+    background-color: #FFFFFF;
+    border: 1px solid #D9D9D9;
+}
+
+#preference-popup button[data-preference="별로"] {
+    background-color: #B8C9DF;
+}
+
+#preference-popup button[data-preference="지뢰"] {
+    background-color: #B5ADC7;
+}
+
+
+#clear-button,
+#cancel-button {
+    width: calc(50% - 5px);
+    height: 38px;
+    margin-top: 6px;
+    border-radius: 7px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#clear-button {
+    background-color: #FFFFFF;
+    color: #A6192E;
+    border: 1px solid #A6192E;
+}
+
+#cancel-button {
+    background-color: #F2F2F2;
+    color: #666666;
+    border: 1px solid #D9D9D9;
+}
+
+#preference-popup button:hover {
+    filter: brightness(0.96);
+}
+
+
+#popup-overlay:not([hidden]) {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.35);
+    z-index: 99;
+}
+
+#popup-overlay[hidden] {
+    display: none;
+}
+
+
+#reset-all-button {
+    display: block;
+    margin: 24px auto 0;
+    padding: 10px 24px;
+    background-color: #FFFFFF;
+    color: #A6192E;
+    border: 1px solid #A6192E;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#reset-all-button:hover {
+    background-color: #A6192E;
+    color: #FFFFFF;
+}
+
+
+/* 전체 페이지 가운데 정렬 */
+body {
+    text-align: center;
+}
+
+/* 취향표 가운데 정렬 */
+#preference-chart {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 범례 가운데 정렬 */
+#preference-legend {
+    justify-content: center;
+}
+
+
+/* 모바일에서 표가 잘리지 않도록 */
+#chart-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+/* PNG 이미지 저장 버튼 */
+#save-image-button {
+    display: block;
+    margin: 24px auto 0;
+    padding: 10px 24px;
+    background-color: #A6192E;
+    color: #FFFFFF;
+    border: 1px solid #A6192E;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#save-image-button:hover {
+    background-color: #871426;
+}
+
+
+/* 전체 초기화 버튼과의 간격 */
+#reset-all-button {
+    margin-top: 10px;
+}
+
+
+/* 저장 및 초기화 버튼 가로 배치 */
+#action-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+}
+
+#save-image-button,
+#reset-all-button {
+    display: inline-block;
+    margin: 0;
+}
+
+
+/* 제목과 아이디 간격 조정 */
+#capture-area h1 {
+    margin-bottom: 6px;
+}
+
+#capture-area p {
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-size: 13px;
+    color: #999999;
+}
+
+
+/* 이미지 저장 영역 너비 조정 */
+#capture-area {
+    width: fit-content;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 24px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+}
+
+
+/* 마우스 강조 효과 */
+#preference-chart td {
+    transition: filter 0.15s ease;
+}
+
+/* 개별 조합: 해당 칸만 강조 */
+#preference-chart td[data-pair]:hover {
+    filter: brightness(0.92);
+}
+
+/* 왼쪽 멤버: 해당 가로줄 강조 */
+#preference-chart tr:not(:first-child):has(> th:first-child:hover) > th,
+#preference-chart tr:not(:first-child):has(> th:first-child:hover) > td[data-pair] {
+    filter: brightness(0.92);
+}
+
+/* 위쪽 멤버: 해당 세로줄 강조 */
+#preference-chart:has(tr:first-child > th:nth-child(2):hover) tr > :nth-child(2):is(th, td[data-pair]),
+#preference-chart:has(tr:first-child > th:nth-child(3):hover) tr > :nth-child(3):is(th, td[data-pair]),
+#preference-chart:has(tr:first-child > th:nth-child(4):hover) tr > :nth-child(4):is(th, td[data-pair]),
+#preference-chart:has(tr:first-child > th:nth-child(5):hover) tr > :nth-child(5):is(th, td[data-pair]),
+#preference-chart:has(tr:first-child > th:nth-child(6):hover) tr > :nth-child(6):is(th, td[data-pair]) {
+    filter: brightness(0.92);
+}
+

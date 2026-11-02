@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>돖페스 취향표</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="capture-area">
+    <h1>돖페스 취향표</h1>
+    <p>@maxmajukee</p>
+
+<div id="chart-container">
+    <table id="preference-chart"></table>
+</div>
+
+
+<div id="preference-legend">
+    <span><i class="legend-color otp"></i>OTP</span>
+    <span><i class="legend-color good"></i>좋음</span>
+    <span><i class="legend-color okay"></i>괜찮음</span>
+    <span><i class="legend-color neutral"></i>관심 없음</span>
+    <span><i class="legend-color bad"></i>별로</span>
+    <span><i class="legend-color mine"></i>지뢰</span>
+</div>
+
+
+</div>
+
+<div id="action-buttons">
+    <button type="button" id="save-image-button">PNG 이미지 저장</button>
+    <button type="button" id="reset-all-button">전체 초기화</button>
+</div>
+
+
+
+<div id="popup-overlay" hidden></div>
+<div id="preference-popup" hidden>
+    <h2>취향 선택</h2>
+
+    <button type="button" data-preference="OTP">OTP</button>
+    <button type="button" data-preference="좋음">좋음</button>
+    <button type="button" data-preference="괜찮음">괜찮음</button>
+    <button type="button" data-preference="관심 없음">관심 없음</button>
+    <button type="button" data-preference="별로">별로</button>
+    <button type="button" data-preference="지뢰">지뢰</button>
+    <button type="button" id="clear-button">선택 해제</button>
+
+    <button type="button" id="cancel-button">취소</button>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
