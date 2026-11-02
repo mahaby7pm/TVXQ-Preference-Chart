@@ -246,8 +246,48 @@ const canvas = await html2canvas(captureArea, {
 });
 
 
-    const link = document.createElement("a");
-    link.download = "돖페스_취향표.png";
-    link.href = canvas.toDataURL("image/png");
-    link.click();
+    
+const fileName = "돖페스_취향표.png";
+
+const blob = await new Promise(function(resolve) {
+    canvas.toBlob(resolve, "image/png");
+});
+
+if (!blob) {
+    alert("이미지를 생성하지 못했어요. 다시 시도해 주세요.");
+    return;
+}
+
+const file = new File([blob], fileName, {
+    type: "image/png"
+});
+
+if (
+    navigator.share &&
+    navigator.canShare &&
+    navigator.canShare({ files: [file] })
+) {
+    try {
+        await navigator.share({ files: [file] });
+        return;
+    } catch (error) {
+        if (error.name === "AbortError") {
+            return;
+        }
+    }
+}
+
+const link = document.createElement("a");
+const url = URL.createObjectURL(blob);
+
+link.href = url;
+link.download = fileName;
+document.body.appendChild(link);
+link.click();
+link.remove();
+
+setTimeout(function() {
+    URL.revokeObjectURL(url);
+}, 60000);
+
 });
