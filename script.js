@@ -291,3 +291,30 @@ setTimeout(function() {
 }, 60000);
 
 });
+
+/* 모바일에서 PC 취향표 비율 유지 */
+function fitPreferenceChart() {
+    const area = document.getElementById("capture-area");
+    const buttons = document.getElementById("action-buttons");
+
+    if (window.innerWidth > 600) {
+        area.style.removeProperty("--mobile-scale");
+        area.style.removeProperty("margin-bottom");
+        return;
+    }
+
+    area.style.setProperty("--mobile-scale", "1");
+
+    const originalWidth = area.getBoundingClientRect().width;
+    const originalHeight = area.getBoundingClientRect().height;
+    const availableWidth = document.documentElement.clientWidth - 24;
+    const scale = Math.min(1, availableWidth / originalWidth);
+
+    area.style.setProperty("--mobile-scale", String(scale));
+
+    /* 축소 후 남는 빈 공간 제거 */
+    area.style.marginBottom = `${-originalHeight * (1 - scale)}px`;
+}
+
+window.addEventListener("load", fitPreferenceChart);
+window.addEventListener("resize", fitPreferenceChart);

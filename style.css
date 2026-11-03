@@ -339,3 +339,19 @@ body {
     filter: brightness(0.92);
 }
 
+/* 모바일: PC 비율 유지 + 가운데 정렬 */
+@media (max-width: 600px) {
+    #capture-area {
+        width: 550px;
+        max-width: none;
+        margin-left: 50%;
+        margin-right: 0;
+        margin-top: 120px;
+        transform-origin: top center;
+        transform: translateX(-50%) scale(var(--mobile-scale, 1));
+    }
+
+    #chart-container {
+        overflow: visible;
+    }
+}
